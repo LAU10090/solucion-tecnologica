@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Reforestación Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SEMBRANDO EL FUTURO</h1>
+    </header>
+    <main>
+        <section id="descripcion">
+            <h2>Descripción</h2>
+            <p>Respondemos cualquiera de tus dudas sobre Reforestación y problemas en la siembra de arboles y plantas o problemas que se presenten durante su crecimineto.</p>
+        </section>
+        <section id="ayuda">
+            <h2>Solicitar Ayuda</h2>
+            <form id="form-ayuda">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+                
+                <label for="problema">Describe tu problema:</label>
+                <textarea id="problema" name="problema" rows="4" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <section id="informacion">
+            <h2>Información Relevante</h2>
+            <p>Aquí se mostrará la información relevante sobre el problema enviado.</p>
+        </section>
+        <section id="solucion">
+            <h2>Solución Propuesta</h2>
+            <p>Aquí se mostrará una solución sugerida.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Plataforma de Reforestación Inteligente</p>
+    </footer>
+    <script>
+        document.getElementById('form-ayuda').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const problema = document.getElementById('problema').value;
+            const solucion = generarSolucion(problema);
+            
+            // Mostrar problema enviado en la sección de información
+            document.getElementById('informacion').innerHTML = '<h2>Información Relevante</h2><p>' + problema + '</p>';
+            
+            // Mostrar la solución propuesta directamente en la sección de solución
+            document.getElementById('solucion').innerHTML = '<h2>Solución Propuesta</h2><p>' + solucion + '</p>';
+        });
+
+        function generarSolucion(problema) {
+            // Ejemplo de solución basada en problemas comunes
+            if (problema.toLowerCase().includes('falta de agua')) {
+                return 'Para la falta de agua, considera implementar sistemas de riego por goteo y captación de agua de lluvia. Fuente: [FAO](http://www.fao.org/irrigation-management).';
+            } else if (problema.toLowerCase().includes('plagas')) {
+                return 'Para problemas de plagas, se recomienda el uso de pesticidas naturales y el control biológico con depredadores naturales. Fuente: [EPA](https://www.epa.gov/safepestcontrol).';
+            } else {
+                return 'Gracias por enviar tu problema. Nuestro equipo lo revisará y te proporcionará una solución más detallada.';
+            }
+        }
+    </script>
+</body>
+</html>
